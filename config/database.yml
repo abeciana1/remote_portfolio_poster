@@ -77,9 +77,17 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
+# #
+# production:
+#   <<: *default
+#   database: remote_portfolio_poster_production
+#   username: remote_portfolio_poster
+#   password: <%= ENV['REMOTE_PORTFOLIO_POSTER_DATABASE_PASSWORD'] %>
 production:
-  <<: *default
-  database: remote_portfolio_poster_production
-  username: remote_portfolio_poster
-  password: <%= ENV['REMOTE_PORTFOLIO_POSTER_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
