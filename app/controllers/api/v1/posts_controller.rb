@@ -19,6 +19,7 @@ class Api::V1::PostsController < ApplicationController
         end
     end
     
+    
     def update
         post = Post.find(params[:id])
         post.update(post_params)
